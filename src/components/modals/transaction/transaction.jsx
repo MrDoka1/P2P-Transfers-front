@@ -22,29 +22,44 @@ const TransactionModal = ({visible, setVisible, sourceAccountNumber, update}) =>
     }, [form.recipientAccountNumber]);
 
     const createTransaction = async () => {
-        try{
+        try {
             if (!form.amount) {
-                toast.error("Заполните поле сумма")
-                return
+                toast.error("Заполните поле сумма");
+                return;
             }
-            if (isNaN(form.amount)) {
-                toast.error("Не корректный ввод суммы")
-                return
+
+            const parsedAmount = parseFloat(form.amount.replace(',', '.'));
+            if (isNaN(parsedAmount)) {
+                toast.error("Некорректный ввод суммы");
+                return;
             }
-            if (recipient === ""){
-                toast.error("Счет не найден")
-                return
+
+            const amountInKopecks = Math.round(parsedAmount * 100);
+
+            if (recipient === "") {
+                toast.error("Счет не найден");
+                return;
             }
-            const data = await transactionCreate({sourceAccountNumber, amount: parseInt(form.amount), recipientAccountNumber: form.recipientAccountNumber});
-            setTransaction(data?.id)
-        }catch(err){
-            const {status} = err;
+
+            const data = await transactionCreate({
+                sourceAccountNumber,
+                amount: amountInKopecks,
+                recipientAccountNumber: form.recipientAccountNumber
+            });
+
+            setTransaction(data?.id);
+        } catch (err) {
+            const { status } = err;
             switch (status) {
                 case 400:
-                    toast.error("Недостаточно средств")
+                    toast.error("Недостаточно средств");
+                    break;
+                default:
+                    toast.error("Ошибка при создании транзакции");
             }
         }
     }
+
 
     return (
         <div className={visible ? [styles.wrapper, styles.wrapperActive].join(" ") : styles.wrapper} onClick={() => {
@@ -97,8 +112,14 @@ const TransactionModal = ({visible, setVisible, sourceAccountNumber, update}) =>
                                 type="text"
                                 placeholder={"Сумма"}
                                 value={form.amount}
-                                onChange={(e)=> setForm({...form, amount: e.target.value})}
-                                />
+                                onChange={(e) => {
+                                    const raw = e.target.value.replace(',', '.');
+                                    // Не даём ввести более 2 знаков после запятой
+                                    if (/^\d*([.,]\d{0,2})?$/.test(raw)) {
+                                        setForm({...form, amount: raw});
+                                    }
+                                }}
+                            />
                             <button onClick={createTransaction}>Создать</button>
                         </>
                     }
