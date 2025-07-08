@@ -1,0 +1,173 @@
+.page{
+  display: flex;
+  width: 100vw;
+  background: #000;
+  height: auto;
+}
+
+.container {
+  height: 100%;
+  padding: 40px 50px;
+}
+
+.header{
+  display: flex;
+  height: 60px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.welcome{
+  font-weight: 600;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+
+.body{
+  border: 1px solid #1b3028;
+  border-radius: 20px;
+  background: #000907;
+  padding: 40px;
+}
+
+.accounts{
+
+}
+.accounts__title{
+  color: #ffff;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.accounts__items{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.accounts__item{
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 270px;
+  background: #000a06;
+  border: 1px solid #323232;
+  border-radius: 15px;
+  padding: 15px 20px;
+  &:hover > .accounts__actions{
+    opacity: 1;
+    pointer-events: all;
+  }
+
+}
+.account__info{
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.accounts__balance{
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #fff;
+}
+
+.accounts__actions{
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  z-index: 10;
+  background: #000a06;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity .2s;
+}
+.accounts__send{
+  border-radius: 10px;
+  background: #208e67;
+  padding: 10px 15px;
+  color: #fff;
+  border: 1px solid #208e67;
+  transition: all 0.5s;
+  &:hover{
+    background: transparent;
+  }
+}
+
+.accounts__copy{
+  border: 1px solid #208E67;
+  border-radius: 11px;
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  &>svg>*>path{
+    transition: all .2s;
+  }
+  &:hover{
+    background: #208E67;
+    &>svg>*>path{
+      fill: #fff;
+    }
+  }
+}
+
+.accounts__delete{
+  border: 1px solid #b64b4b;
+  border-radius: 11px;
+  width: 40px;
+  height: 40px;
+  &>svg>path{
+    transition: all .2s;
+  }
+  &:hover{
+    background: #b64b4b;
+    &>svg>path{
+      fill: #fff;
+    }
+  }
+}
+.accounts__create{
+  margin-top: 30px;
+  background: #000a06;
+  border: 1px solid #323232;
+  border-radius: 15px;
+  padding: 20px 25px;
+  width: 350px;
+
+  h3{
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffff;
+    margin-bottom: 20px;
+  }
+  input{
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    color: #ffff;
+    font-weight: 500;
+  }
+  button {
+    border-radius: 10px;
+    background: #208e67;
+    padding: 10px 15px;
+    color: #fff;
+    border: 1px solid #208e67;
+    transition: all 0.5s;
+    &:hover{
+      background: transparent;
+    }
+
+  }
+}

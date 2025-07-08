@@ -1,0 +1,71 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(0, 255, 153, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 153, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 16px);
+  grid-template-rows: repeat(10, 16px);
+  gap: 6px;
+  z-index: 2;
+}
+
+.cell {
+  width: 16px;
+  height: 16px;
+  background-color: #00ff99;
+  border-radius: 3px;
+  opacity: 0.8;
+  animation: wave 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.text {
+  z-index: 2;
+  color: #00ff99;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Segoe UI", sans-serif;
+  letter-spacing: 0.5px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

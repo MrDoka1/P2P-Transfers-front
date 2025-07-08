@@ -1,0 +1,140 @@
+
+input,
+textarea,
+button,
+select,
+a,
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo One:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide:wght@300;400;500;600;700&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+#root{
+  min-height: 100%;
+  background: #000;
+}
+html,
+body {
+  height: 100%;
+  min-width: 350px;
+}
+
+body {
+  line-height: 1;
+  font-size: 1.125rem;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow-y: hidden;
+}
+
+input,
+button,
+textarea {
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+body {
+  scroll-behavior: smooth;
+  color: #000;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #575757;
+}
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+[class*=_container] {
+  max-width: 1920px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: none;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  border: 3px solid #fff;
+}
+
+.custom-toast {
+  background-color: #000e09 !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 20px 35px !important;
+  color: #FFF !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  font-family: 'Russo One', sans-serif!important;
+  border: none !important;
+  border-left: 5px solid #00ffae!important;
+  border-radius: 5px !important;
+  &>*:first-child{
+    display: none !important;
+  }
+}
+
+.custom-toast-error {
+  color: #ff4b4b !important;
+  border-color: #ff4b4b !important;
+  background-color: #0e0000 !important;
+}
