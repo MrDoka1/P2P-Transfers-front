@@ -100,7 +100,7 @@ const MainPage = observer(() => {
                                         accounts?.length > 0 && accounts.map(account =>
                                             <div key={account.id} className={style.accounts__item}>
                                                 <div className={style.account__info}>{account?.accountNumber} - {account?.name}</div>
-                                                <div className={style.accounts__balance}>{account?.balance} руб.</div>
+                                                <div className={style.accounts__balance}>{(account?.balance / 100).toFixed(2)} руб.</div>
                                                 <div className={style.accounts__actions}>
                                                     <button className={style.accounts__send} onClick={()=> setPopup({visible: true, sourceAccountNumber: account?.accountNumber})}>
                                                         Отправить
