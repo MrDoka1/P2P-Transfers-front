@@ -140,9 +140,17 @@ const MainPage = observer(() => {
 
                                     <input
                                         type="text"
-                                        placeholder={"Баланс"}
+                                        placeholder="Баланс"
                                         {...register('balance', {
                                             required: 'Введите баланс счета',
+                                            pattern: {
+                                                value: /^\d+([.,]\d{0,2})?$/,
+                                                message: 'Введите число в формате рубли.копейки',
+                                            },
+                                            setValueAs: (value) => {
+                                                const parsed = parseFloat(value.replace(',', '.'));
+                                                return isNaN(parsed) ? 0 : Math.round(parsed * 100); // сохраняем в копейках
+                                            },
                                         })}
                                     />
 
